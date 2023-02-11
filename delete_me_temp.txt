@@ -1,0 +1,28 @@
+
+
+
+if(lineNumber == NOISE_IN_DATA)
+    {
+        return; // Get back, come with new noise-free data
+    }
+    
+
+
+if(lineNumber == LINE_NUMBER_ERROR_DUE_TOO_MUCH_NOISE)
+    {
+        motionStop(); // Stop Motors
+        digitalWrite(LED_SUCCESS_PIN_NO, HIGH);
+
+        delay(100);
+        DUMP_L1_a("\r\n  LINE_NUMBER_ERROR_DUE_TO_TOO_MUCH_NOISE   STOP \r\n");
+        
+        DUMP_L1_a ("\r\n Press the BOTTOM Button to IGNORE (or RESET button to Start Over)");
+        beep(5, 400); // 
+        batteryVoltageCheck(PRINT); // Check
+
+        iTerm = 0;
+
+        waitForSwitchPress(SWITCH_BOTTOM, NO_PRINT);              
+        //while(1);  // FINALLY HANG
+            
+    }
